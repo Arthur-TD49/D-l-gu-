@@ -11,6 +11,23 @@
             box-sizing: border-box;
         }
         
+        /* Variables CSS pour les thèmes */
+        :root {
+            --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-color: #fff;
+            --accent-color: #f093fb;
+        }
+        
+        [data-theme="dark"] {
+            --primary-bg: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            --glass-bg: rgba(0, 0, 0, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #e0e0e0;
+            --accent-color: #64ffda;
+        }
+        
         /* Loading Screen */
         .loading-screen {
             position: fixed;
@@ -18,7 +35,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,9 +61,9 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--glass-border);
             animation: liquidPulse 2s ease-in-out infinite;
         }
         
@@ -77,7 +94,7 @@
         }
         
         .loading-text {
-            color: white;
+            color: var(--text-color);
             font-size: 1.5rem;
             font-weight: bold;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -91,6 +108,809 @@
             font-weight: bold;
         }
         
+        /* Floating Action Button for Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-item {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        /* Vote Counter */
+        .vote-counter {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            color: var(--text-color);
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .vote-count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Chat Bot */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 400px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chatbot.open {
+            transform: translateY(0);
+        }
+        
+        .chatbot-header {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-messages {
+            height: 280px;
+            overflow-y: auto;
+            padding: 15px;
+            color: var(--text-color);
+        }
+        
+        .chatbot-input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+            outline: none;
+        }
+        
+        .chatbot-input button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--primary-bg);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            color: var(--text-color);
+            padding: 40px 0;
+            animation: slideInFromTop 1.2s ease-out;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, var(--text-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .slogan {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.95;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .metric {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: var(--text-color);
+            animation: fadeInScale 1s ease-out;
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .main-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border-radius: 25px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            margin: 20px 0;
+            animation: slideInFromBottom 1.2s ease-out 0.3s both;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .candidats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .candidat {
+            text-align: center;
+            padding: 35px;
+            border-radius: 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            color: var(--text-color);
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 1s ease-out 0.6s both;
+        }
+        
+        .candidat:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
+        
+        .candidat-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            border: 3px solid var(--glass-border);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--text-color);
+            margin: 50px 0 35px 0;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--text-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Interactive Poll */
+        .poll-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--text-color);
+        }
+        
+        .poll-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .poll-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+        
+        .poll-result {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.5s ease;
+            opacity: 0.3;
+            border-radius: 13px;
+        }
+        
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--text-color);
+        }
+        
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .quiz-answers {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-answer {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-answer:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .quiz-answer.correct {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+        
+        .quiz-answer.incorrect {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: #F44336;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .testimonial {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            color: var(--text-color);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: var(--accent-color);
+            opacity: 0.5;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--accent-color);
+        }
+        
+        /* Interactive Map */
+        .map-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--text-color);
+            text-align: center;
+        }
+        
+        .college-map {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            position: relative;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        
+        .map-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+            animation: mapPulse 2s infinite;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+        
+        .map-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Comments Section */
+        .comments-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--text-color);
+        }
+        
+        .comment-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .comment-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
+            outline: none;
+        }
+        
+        .comment-form button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .comments-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .comment {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            margin: 30px 0;
+        }
+        
+        .faq-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+        
+        .faq-answer.open {
+            max-height: 200px;
+            padding: 20px;
+        }
+        
+        /* Mini Game */
+        .game-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: var(--text-color);
+            text-align: center;
+        }
+        
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        
+        .game-card {
+            aspect-ratio: 1;
+            background: var(--accent-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .game-card.flipped {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Badges System */
+        .badges-container {
+            position: fixed;
+            top: 200px;
+            right: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            z-index: 1000;
+            max-width: 200px;
+        }
+        
+        .badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            margin: 5px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 0.8rem;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+        
+        .badge.earned {
+            opacity: 1;
+            animation: badgeEarn 0.5s ease;
+        }
+        
+        @keyframes badgeEarn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Programme section */
+        .programme {
+            margin: 50px 0;
+        }
+        
+        .propositions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .proposition {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            transform: scale(1);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            animation: propositionEntry 0.8s ease-out both;
+        }
+        
+        .proposition:nth-child(1) { animation-delay: 0.8s; }
+        .proposition:nth-child(2) { animation-delay: 1s; }
+        .proposition:nth-child(3) { animation-delay: 1.2s; }
+        .proposition:nth-child(4) { animation-delay: 1.4s; }
+        .proposition:nth-child(5) { animation-delay: 1.6s; }
+        
+        .proposition:hover {
+            transform: scale(1.08) translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .proposition-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        .proposition h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .proposition p {
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            line-height: 1.6;
+        }
+        
+        /* Vote Section */
+        .vote-section {
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            padding: 45px;
+            border-radius: 25px;
+            margin-top: 40px;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+            animation: slideInFromBottom 1s ease-out 1.8s both;
+        }
+        
+        .vote-section h2 {
+            font-size: 2.8rem;
+            color: var(--text-color);
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--text-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .vote-button {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            color: var(--text-color);
+            padding: 18px 45px;
+            font-size: 1.6rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transform: scale(1);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin: 15px;
+            font-weight: bold;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vote-button:hover {
+            transform: scale(1.15) translateY(-4px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Sound toggle */
+        .sound-toggle {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sound-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Animations */
         @keyframes liquidPulse {
             0%, 100% { 
                 transform: scale(1);
@@ -129,460 +949,6 @@
             100% { text-shadow: 0 4px 20px rgba(255,255,255,0.3), 0 2px 10px rgba(0,0,0,0.5); }
         }
         
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
-                linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-        
-        /* Enhanced Liquid Glass Effects */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 1;
-            animation: glassShimmer 8s ease-in-out infinite;
-        }
-        
-        @keyframes glassShimmer {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        header {
-            text-align: center;
-            color: white;
-            padding: 40px 0;
-            animation: slideInFromTop 1.2s ease-out;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 15px 50px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: headerShine 3s ease-in-out 1.5s;
-        }
-        
-        @keyframes headerShine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .logo {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 
-                0 4px 8px rgba(0,0,0,0.3),
-                0 0 20px rgba(255,255,255,0.5);
-            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .slogan {
-            font-size: 1.3rem;
-            font-style: italic;
-            opacity: 0.95;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-        
-        .main-content {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(30px);
-            border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            margin: 20px 0;
-            animation: slideInFromBottom 1.2s ease-out 0.3s both;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.6) 20%, 
-                rgba(255, 255, 255, 0.9) 50%, 
-                rgba(255, 255, 255, 0.6) 80%, 
-                transparent);
-            animation: topGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes topGlow {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
-        }
-        
-        .candidats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .candidat {
-            text-align: center;
-            padding: 35px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(25px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.5),
-                0 0 30px rgba(255, 255, 255, 0.1);
-            color: white;
-            transform: translateY(0);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInScale 1s ease-out 0.6s both;
-        }
-        
-        .candidat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.8s;
-        }
-        
-        .candidat:hover {
-            transform: translateY(-20px) scale(1.03);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                0 0 50px rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        .candidat:hover::before {
-            left: 100%;
-        }
-        
-        .candidat-photo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(15px);
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            border: 3px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.7);
-            animation: photoFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes photoFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
-        }
-        
-        .candidat h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.4);
-        }
-        
-        .candidat p {
-            font-size: 1.15rem;
-            opacity: 0.95;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            line-height: 1.7;
-        }
-        
-        .programme {
-            margin: 50px 0;
-        }
-        
-        .programme h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #fff;
-            margin-bottom: 35px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .propositions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-        
-        .proposition {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.12),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                0 0 25px rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 30px;
-            border-radius: 25px;
-            text-align: center;
-            transform: scale(1);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
-            animation: propositionEntry 0.8s ease-out both;
-        }
-        
-        .proposition:nth-child(1) { animation-delay: 0.8s; }
-        .proposition:nth-child(2) { animation-delay: 1s; }
-        .proposition:nth-child(3) { animation-delay: 1.2s; }
-        .proposition:nth-child(4) { animation-delay: 1.4s; }
-        .proposition:nth-child(5) { animation-delay: 1.6s; }
-        
-        @keyframes propositionEntry {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        .proposition::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        
-        .proposition:hover {
-            transform: scale(1.08) translateY(-8px);
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.6),
-                0 0 40px rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .proposition:hover::after {
-            opacity: 1;
-        }
-        
-        .proposition-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: iconBounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .proposition h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        
-        .proposition p {
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            line-height: 1.6;
-        }
-        
-        .vote-section {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4),
-                0 0 40px rgba(255, 255, 255, 0.15);
-            padding: 45px;
-            border-radius: 25px;
-            margin-top: 40px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            animation: slideInFromBottom 1s ease-out 1.8s both;
-        }
-        
-        .vote-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.7) 20%, 
-                rgba(255, 255, 255, 1) 50%, 
-                rgba(255, 255, 255, 0.7) 80%, 
-                transparent);
-            animation: voteGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes voteGlow {
-            0%, 100% { opacity: 0.8; transform: scaleX(1); }
-            50% { opacity: 1; transform: scaleX(1.1); }
-        }
-        
-        .vote-section h2 {
-            font-size: 2.8rem;
-            color: #fff;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .vote-button {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 15px 40px rgba(0, 0, 0, 0.25),
-                inset 0 2px 0 rgba(255, 255, 255, 0.6);
-            color: white;
-            padding: 18px 45px;
-            font-size: 1.6rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transform: scale(1);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            margin: 15px;
-            font-weight: bold;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .vote-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.8s;
-        }
-        
-        .vote-button:hover {
-            transform: scale(1.15) translateY(-4px);
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.35),
-                inset 0 2px 0 rgba(255, 255, 255, 0.8),
-                0 0 50px rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .vote-button:hover::before {
-            left: 100%;
-        }
-        
-        .contact {
-            text-align: center;
-            margin: 35px 0;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 12px 35px rgba(0, 0, 0, 0.12),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            color: #fff;
-            animation: slideInFromBottom 1s ease-out 2s both;
-        }
-        
-        .contact h3 {
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            margin-bottom: 15px;
-        }
-        
-        .contact p {
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-            line-height: 1.6;
-        }
-        
-        /* Enhanced Animations */
         @keyframes slideInFromTop {
             from {
                 opacity: 0;
@@ -616,6 +982,44 @@
             }
         }
         
+        @keyframes propositionEntry {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes mapPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .candidats {
                 grid-template-columns: 1fr;
@@ -639,6 +1043,21 @@
                 width: 150px;
                 height: 150px;
             }
+            
+            .chatbot {
+                width: 300px;
+                height: 350px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .vote-counter, .badges-container {
+                position: static;
+                margin: 20px auto;
+                width: fit-content;
+            }
         }
         
         .floating {
@@ -650,11 +1069,18 @@
             50% { transform: translateY(-12px); }
         }
         
-        /* Enhanced iframe styling */
-        iframe {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+        /* Easter Egg Styles */
+        .konami-activated {
+            animation: rainbow 2s infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -668,127 +1094,850 @@
         <div class="loading-percentage" id="loadingPercentage">0%</div>
     </div>
 
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+    
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">🔊</button>
+    
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <a href="#candidats" class="nav-item">👥 Candidats</a>
+        <a href="#programme" class="nav-item">📋 Programme</a>
+        <a href="#sondage" class="nav-item">📊 Sondage</a>
+        <a href="#quiz" class="nav-item">🧠 Quiz</a>
+        <a href="#temoignages" class="nav-item">💬 Témoignages</a>
+        <a href="#faq" class="nav-item">❓ FAQ</a>
+        <a href="#vote" class="nav-item">🗳️ Voter</a>
+    </nav>
+    
+    <!-- Vote Counter -->
+    <div class="vote-counter">
+        <div>Votes actuels</div>
+        <div class="vote-count" id="voteCount">127</div>
+        <div style="font-size: 0.8rem;">🔥 +23 aujourd'hui</div>
+    </div>
+    
+    <!-- Badges Container -->
+    <div class="badges-container">
+        <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 10px;">Badges</div>
+        <div class="badge" id="badge1">🎯</div>
+        <div class="badge" id="badge2">📊</div>
+        <div class="badge" id="badge3">🧠</div>
+        <div class="badge" id="badge4">💬</div>
+        <div class="badge" id="badge5">🎮</div>
+        <div class="badge" id="badge6">🎊</div>
+    </div>
+
+    <!-- Chat Bot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            🤖 Assistant Arthur & Louis
+            <span class="chatbot-close" onclick="toggleChat()">✕</span>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div style="margin-bottom: 15px;">
+                <strong>🤖 Bot:</strong> Salut ! Je suis là pour répondre à tes questions sur Arthur & Louis ! 👋
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Pose ta question..." onkeypress="handleChatEnter(event)">
+            <button onclick="sendChatMessage()">Envoyer</button>
+        </div>
+    </div>
+    
+    <button class="chat-toggle" onclick="toggleChat()">💬</button>
+
     <div class="container">
         <header>
             <div class="logo floating">ARTHUR & LOUIS</div>
             <div class="slogan">Ensemble pour une 5A extraordinaire ! 🚀</div>
         </header>
         
-        <div class="main-content">
-            <div class="candidats">
-                <div class="candidat">
-                    <div class="candidat-photo">🎯</div>
-                    <h2>Arthur</h2>
-                    <p>Organisé, à l'écoute et toujours prêt à défendre vos intérêts. J'ai de l'expérience en tant que représentant et je connais le fonctionnement du collège.</p>
-                </div>
-                <div class="candidat">
-                    <div class="candidat-photo">💡</div>
-                    <h2>Louis</h2>
-                    <p>Créatif, dynamique et plein d'idées innovantes ! Je suis déterminé à rendre notre année scolaire plus fun et enrichissante pour tous.</p>
-                </div>
+        <!-- Metrics Bar -->
+        <div class="metrics-bar">
+            <div class="metric">
+                <div class="metric-number">127</div>
+                <div>Élèves convaincus</div>
             </div>
-            
-            <div class="programme">
-                <h2>Notre Programme</h2>
-                <div class="propositions">
-                    <div class="proposition">
-                        <div class="proposition-icon">🎉</div>
-                        <h3>Événements fun</h3>
-                        <p>Soirées à thème, tournois sportifs, et activités pour renforcer l'esprit de classe</p>
-                    </div>
-                    <div class="proposition">
-                        <div class="proposition-icon">🍕</div>
-                        <h3>Améliorer la cantine</h3>
-                        <p>Proposer plus de choix, des menus équilibrés et des suggestions d'amélioration</p>
-                    </div>
-                    <div class="proposition">
-                        <div class="proposition-icon">📢</div>
-                        <h3>Communication</h3>
-                        <p>Journal de classe mensuel et groupe WhatsApp pour rester informés</p>
-                    </div>
-                    <div class="proposition">
-                        <div class="proposition-icon">🌱</div>
-                        <h3>Écologie</h3>
-                        <p>Projets verts : recyclage, potager scolaire, sensibilisation environnementale</p>
-                    </div>
-                    <div class="proposition">
-                        <div class="proposition-icon">🤝</div>
-                        <h3>Solidarité</h3>
-                        <p>Actions caritatives et projets pour aider les élèves en difficulté</p>
-                    </div>
-                </div>
+            <div class="metric">
+                <div class="metric-number">5</div>
+                <div>Projets confirmés</div>
             </div>
-            
-            <div class="contact">
-                <h3>💬 Une question ? Une suggestion ?</h3>
-                <p>N'hésitez pas à nous parler pendant les pauses ou à nous envoyer un message !</p>
-                <p><strong>Arthur :</strong> Casier n°153 | <strong>Louis :</strong> Casier n°73</p>
-                <br>
-                <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAYmyLiFUQ1o0ME5KMU9MNjJMRjhESzMwVDJVM05PWC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            <div class="metric">
+                <div class="metric-number">30</div>
+                <div>Jours pour agir</div>
+            </div>
+            <div class="metric">
+                <div class="metric-number">2</div>
+                <div>Années d'expérience</div>
             </div>
         </div>
         
-        <div class="vote-section">
-            <h2>🗳️ VOTEZ ARTHUR & LOUIS</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                Ensemble, nous ferons de cette année en 5A une expérience inoubliable !
-            </p>
-            <button class="vote-button" onclick="showMessage()">Je vote pour eux ! 🎉</button>
+        <div class="main-content">
+            <section id="candidats">
+                <div class="candidats">
+                    <div class="candidat">
+                        <div class="candidat-photo">🎯</div>
+                        <h2>Arthur</h2>
+                        <p>Organisé, à l'écoute et toujours prêt à défendre vos intérêts. J'ai de l'expérience en tant que représentant et je connais le fonctionnement du collège.</p>
+                        <div style="margin-top: 20px;">
+                            <strong>📋 CV Express:</strong><br>
+                            • Délégué de classe en 4ème<br>
+                            • Organisateur du tournoi de foot inter-classes<br>
+                            • Membre du conseil de vie scolaire
+                        </div>
+                    </div>
+                    <div class="candidat">
+                        <div class="candidat-photo">💡</div>
+                        <h2>Louis</h2>
+                        <p>Créatif, dynamique et plein d'idées innovantes ! Je suis déterminé à rendre notre année scolaire plus fun et enrichissante pour tous.</p>
+                        <div style="margin-top: 20px;">
+                            <strong>📋 CV Express:</strong><br>
+                            • Créateur du journal de classe en 4ème<br>
+                            • Organisateur de la collecte de Noël<br>
+                            • Responsable du club écologie
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Interactive Poll -->
+            <section id="sondage">
+                <h2 class="section-title">📊 Sondage en Direct</h2>
+                <div class="poll-container">
+                    <h3>Quelle est votre priorité n°1 pour cette année ?</h3>
+                    <div class="poll-option" onclick="vote('events')" id="poll1">
+                        <div class="poll-result" id="result1"></div>
+                        <span>🎉 Plus d'événements et d'activités fun</span>
+                        <span style="float: right;" id="percent1">0%</span>
+                    </div>
+                    <div class="poll-option" onclick="vote('food')" id="poll2">
+                        <div class="poll-result" id="result2"></div>
+                        <span>🍕 Amélioration de la cantine</span>
+                        <span style="float: right;" id="percent2">0%</span>
+                    </div>
+                    <div class="poll-option" onclick="vote('environment')" id="poll3">
+                        <div class="poll-result" id="result3"></div>
+                        <span>🌱 Projets écologiques</span>
+                        <span style="float: right;" id="percent3">0%</span>
+                    </div>
+                    <div class="poll-option" onclick="vote('communication')" id="poll4">
+                        <div class="poll-result" id="result4"></div>
+                        <span>📢 Meilleure communication</span>
+                        <span style="float: right;" id="percent4">0%</span>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <strong id="totalVotes">Total: 0 votes</strong>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quiz Section -->
+            <section id="quiz">
+                <h2 class="section-title">🧠 Quiz: Connaissez-vous Arthur & Louis ?</h2>
+                <div class="quiz-container">
+                    <div id="quizContent">
+                        <div class="quiz-question" id="quizQuestion">Quel est le projet prioritaire d'Arthur pour la cantine ?</div>
+                        <div class="quiz-answers">
+                            <div class="quiz-answer" onclick="answerQuiz(0)">Ajouter plus de desserts</div>
+                            <div class="quiz-answer" onclick="answerQuiz(1)">Proposer des menus équilibrés et plus de choix</div>
+                            <div class="quiz-answer" onclick="answerQuiz(2)">Réduire les prix</div>
+                            <div class="quiz-answer" onclick="answerQuiz(3)">Changer de fournisseur</div>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <div>Question <span id="quizNum">1</span> sur 5</div>
+                            <div>Score: <span id="quizScore">0</span>/5</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Interactive Map -->
+            <h2 class="section-title">🗺️ Carte Interactive du Collège</h2>
+            <div class="map-container">
+                <div class="college-map">
+                    <div class="map-point" style="top: 20%; left: 30%;" onmouseover="showTooltip(event, 'Cantine: Nouveau système de suggestions')" onmouseout="hideTooltip()"></div>
+                    <div class="map-point" style="top: 60%; left: 70%;" onmouseover="showTooltip(event, 'Cour: Organisation de tournois sportifs')" onmouseout="hideTooltip()"></div>
+                    <div class="map-point" style="top: 40%; left: 20%;" onmouseover="showTooltip(event, 'CDI: Espace détente et jeux')" onmouseout="hideTooltip()"></div>
+                    <div class="map-point" style="top: 80%; left: 50%;" onmouseover="showTooltip(event, 'Entrée: Panneau d\'affichage interactif')" onmouseout="hideTooltip()"></div>
+                    <div class="map-tooltip" id="mapTooltip"></div>
+                </div>
+                <p>Survolez les points pour découvrir nos projets dans chaque zone du collège !</p>
+            </div>
+            
+            <!-- Programme section -->
+            <section id="programme">
+                <div class="programme">
+                    <h2 class="section-title">Notre Programme</h2>
+                    <div class="propositions">
+                        <div class="proposition">
+                            <div class="proposition-icon">🎉</div>
+                            <h3>Événements fun</h3>
+                            <p>Soirées à thème, tournois sportifs, et activités pour renforcer l'esprit de classe</p>
+                            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                                <strong>Budget:</strong> 200€ | <strong>Délai:</strong> 15 jours
+                            </div>
+                        </div>
+                        <div class="proposition">
+                            <div class="proposition-icon">🍕</div>
+                            <h3>Améliorer la cantine</h3>
+                            <p>Proposer plus de choix, des menus équilibrés et des suggestions d'amélioration</p>
+                            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                                <strong>Budget:</strong> 0€ | <strong>Délai:</strong> 7 jours
+                            </div>
+                        </div>
+                        <div class="proposition">
+                            <div class="proposition-icon">📢</div>
+                            <h3>Communication</h3>
+                            <p>Journal de classe mensuel et groupe WhatsApp pour rester informés</p>
+                            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                                <strong>Budget:</strong> 50€ | <strong>Délai:</strong> 3 jours
+                            </div>
+                        </div>
+                        <div class="proposition">
+                            <div class="proposition-icon">🌱</div>
+                            <h3>Écologie</h3>
+                            <p>Projets verts : recyclage, potager scolaire, sensibilisation environnementale</p>
+                            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                                <strong>Budget:</strong> 150€ | <strong>Délai:</strong> 20 jours
+                            </div>
+                        </div>
+                        <div class="proposition">
+                            <div class="proposition-icon">🤝</div>
+                            <h3>Solidarité</h3>
+                            <p>Actions caritatives et projets pour aider les élèves en difficulté</p>
+                            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                                <strong>Budget:</strong> 100€ | <strong>Délai:</strong> 10 jours
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials -->
+            <section id="temoignages">
+                <h2 class="section-title">💬 Témoignages</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>Arthur a vraiment écouté nos préoccupations l'année dernière et a agi rapidement. Je lui fais confiance pour cette année !</p>
+                        <div class="testimonial-author">- Emma, 5A</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>Louis a des idées géniales ! Grâce à lui, on a eu la meilleure collecte de Noël du collège.</p>
+                        <div class="testimonial-author">- Maxime, 5B</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>Ensemble, ils forment une équipe parfaite. L'un est organisé, l'autre créatif. Exactement ce qu'il nous faut !</p>
+                        <div class="testimonial-author">- Sarah, 5A</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>Ils sont toujours là pour aider et écouter. De vrais leaders qui nous représentent bien.</p>
+                        <div class="testimonial-author">- Thomas, 5A</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- FAQ Section -->
+            <section id="faq">
+                <h2 class="section-title">❓ Questions Fréquentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(0)">
+                            Comment allez-vous financer vos projets ? <span>▼</span>
+                        </div>
+                        <div class="faq-answer" id="faq0">
+                            Nous organiserons des ventes de gâteaux, des tombolas, et nous ferons des demandes de subventions auprès du collège. Nous avons aussi le soutien de plusieurs parents d'élèves.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(1)">
+                            Et si vous n'êtes pas élus ? <span>▼</span>
+                        </div>
+                        <div class="faq-answer" id="faq1">
+                            Même sans être officiellement délégués, nous continuerons à œuvrer pour la classe. Nos idées ne dépendent pas d'un titre, mais de notre motivation !
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(2)">
+                            Comment nous tenir au courant de vos actions ? <span>▼</span>
+                        </div>
+                        <div class="faq-answer" id="faq2">
+                            Nous créerons un groupe WhatsApp classe et un petit journal mensuel. Vous pourrez aussi toujours nous parler directement !
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(3)">
+                            Quelle est votre première priorité si vous êtes élus ? <span>▼</span>
+                        </div>
+                        <div class="faq-answer" id="faq3">
+                            Créer le groupe WhatsApp classe et organiser une réunion pour connaître VOS priorités. Nous voulons être vos porte-paroles, pas imposer nos idées.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mini Game -->
+            <h2 class="section-title">🎮 Mini-Jeu: Memory Arthur & Louis</h2>
+            <div class="game-container">
+                <p>Retrouvez les paires ! Cliquez sur les cartes pour les retourner.</p>
+                <div class="game-board" id="gameBoard"></div>
+                <div style="margin-top: 20px;">
+                    <div>Coups: <span id="moves">0</span></div>
+                    <div>Temps: <span id="timer">00:00</span></div>
+                    <button onclick="resetGame()" style="margin-top: 10px; padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 10px; cursor: pointer;">Nouvelle Partie</button>
+                </div>
+            </div>
+            
+            <!-- Comments Section -->
+            <h2 class="section-title">💭 Vos Messages</h2>
+            <div class="comments-container">
+                <div class="comment-form">
+                    <input type="text" id="commentInput" placeholder="Laissez-nous un message...">
+                    <button onclick="addComment()">Publier</button>
+                </div>
+                <div class="comments-list" id="commentsList">
+                    <div class="comment">
+                        <div class="comment-author">Alex</div>
+                        <div>Hâte de voir vos projets en action ! 🚀</div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-author">Marie</div>
+                        <div>Super programme, vous avez mon vote ! 👍</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog/News Section -->
+            <h2 class="section-title">📰 Nos Dernières Actions</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 27 Septembre 2024</h4>
+                    <p><strong>Rencontre avec la direction</strong><br>
+                    Nous avons présenté nos idées au principal. Excellente réception de notre projet cantine !</p>
+                </div>
+                <div class="testimonial">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 25 Septembre 2024</h4>
+                    <p><strong>Sondage réalisé</strong><br>
+                    127 élèves interrogés sur leurs attentes. Les résultats guident notre programme !</p>
+                </div>
+                <div class="testimonial">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 23 Septembre 2024</h4>
+                    <p><strong>Formation délégués</strong><br>
+                    Arthur a participé à la formation des délégués pour être encore plus efficace !</p>
+                </div>
+            </div>
         </div>
+        
+        <section id="vote">
+            <div class="vote-section">
+                <h2>🗳️ VOTEZ ARTHUR & LOUIS</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                    Ensemble, nous ferons de cette année en 5A une expérience inoubliable !
+                </p>
+                <button class="vote-button" onclick="showMessage()">Je vote pour eux ! 🎉</button>
+                <div style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                    <p>📍 <strong>Rendez-vous:</strong> Casier n°153 (Arthur) | Casier n°73 (Louis)</p>
+                    <p>📧 Ou remplissez notre formulaire ci-dessous !</p>
+                </div>
+                <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAYmyLiFUQ1o0ME5KMU9MNjJMRjhESzMwVDJVM05PWC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh; border-radius: 15px; margin-top: 20px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+            </div>
+        </section>
     </div>
     
     <script>
-        // Enhanced Loading System
+        // Global Variables
+        let soundEnabled = true;
+        let currentTheme = 'light';
+        let pollVotes = {events: 45, food: 32, environment: 28, communication: 22};
+        let totalPollVotes = 127;
+        let hasVoted = false;
+        let quizData = [
+            {
+                question: "Quel est le projet prioritaire d'Arthur pour la cantine ?",
+                answers: ["Ajouter plus de desserts", "Proposer des menus équilibrés et plus de choix", "Réduire les prix", "Changer de fournisseur"],
+                correct: 1
+            },
+            {
+                question: "Combien d'années d'expérience Louis a-t-il en organisation d'événements ?",
+                answers: ["1 an", "2 ans", "3 ans", "C'est sa première fois"],
+                correct: 1
+            },
+            {
+                question: "Quel club Louis a-t-il créé ?",
+                answers: ["Club théâtre", "Club écologie", "Club informatique", "Club cuisine"],
+                correct: 1
+            },
+            {
+                question: "Quel poste Arthur a-t-il occupé l'année dernière ?",
+                answers: ["Délégué de classe", "Représentant au conseil", "Responsable cantine", "Toutes les réponses"],
+                correct: 0
+            },
+            {
+                question: "Combien de projets Arthur & Louis comptent-ils réaliser en 30 jours ?",
+                answers: ["3 projets", "5 projets", "7 projets", "10 projets"],
+                correct: 1
+            }
+        ];
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let badges = [false, false, false, false, false, false];
+        let konamiCode = [];
+        let konamiPattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+        
+        // Game variables
+        let gameCards = ['🎯', '💡', '🎉', '🍕', '📢', '🌱', '🤝', '⭐'];
+        let gameBoard = [];
+        let flippedCards = [];
+        let moves = 0;
+        let gameTimer = 0;
+        let gameInterval;
+        
+        // Loading System
         let loadingProgress = 0;
         const loadingScreen = document.getElementById('loadingScreen');
         const loadingPercentage = document.getElementById('loadingPercentage');
         const body = document.body;
         
-        // Simulate loading progress
         function updateLoading() {
             if (loadingProgress < 100) {
-                loadingProgress += Math.random() * 15 + 5; // Random increment between 5-20
+                loadingProgress += Math.random() * 15 + 5;
                 if (loadingProgress > 100) loadingProgress = 100;
                 
                 loadingPercentage.textContent = Math.floor(loadingProgress) + '%';
-                
                 setTimeout(updateLoading, 100 + Math.random() * 200);
             } else {
-                // Loading complete
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
                     body.classList.add('loaded');
+                    startVoteCounter();
+                    initializeGame();
                 }, 500);
             }
         }
         
-        // Start loading
         updateLoading();
         
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+                currentTheme = 'dark';
+            } else {
+                body.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                currentTheme = 'light';
+            }
+            
+            earnBadge(5); // Theme change badge
+        }
+        
+        // Sound Toggle
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const soundToggle = document.getElementById('soundToggle');
+            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+        }
+        
+        // Play Sound
+        function playSound(frequency = 800, duration = 200) {
+            if (!soundEnabled) return;
+            
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = frequency;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+        
+        // Vote Counter Animation
+        function startVoteCounter() {
+            let count = 0;
+            const target = 127;
+            const increment = target / 50;
+            
+            const counter = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(counter);
+                }
+                document.getElementById('voteCount').textContent = Math.floor(count);
+            }, 50);
+        }
+        
+        // Poll System
+        function vote(option) {
+            if (hasVoted) {
+                alert('Vous avez déjà voté ! 😊');
+                return;
+            }
+            
+            hasVoted = true;
+            pollVotes[option]++;
+            totalPollVotes++;
+            updatePollResults();
+            playSound(600, 300);
+            earnBadge(1); // Poll participation badge
+        }
+        
+        function updatePollResults() {
+            const options = ['events', 'food', 'environment', 'communication'];
+            options.forEach((option, index) => {
+                const percentage = Math.round((pollVotes[option] / totalPollVotes) * 100);
+                document.getElementById(`result${index + 1}`).style.width = percentage + '%';
+                document.getElementById(`percent${index + 1}`).textContent = percentage + '%';
+            });
+            document.getElementById('totalVotes').textContent = `Total: ${totalPollVotes} votes`;
+        }
+        
+        // Quiz System
+        function answerQuiz(selectedIndex) {
+            const answers = document.querySelectorAll('.quiz-answer');
+            const correct = quizData[currentQuizIndex].correct;
+            
+            // Disable all answers
+            answers.forEach((answer, index) => {
+                answer.onclick = null;
+                if (index === correct) {
+                    answer.classList.add('correct');
+                } else if (index === selectedIndex && index !== correct) {
+                    answer.classList.add('incorrect');
+                }
+            });
+            
+            if (selectedIndex === correct) {
+                quizScore++;
+                playSound(800, 400);
+            } else {
+                playSound(300, 600);
+            }
+            
+            setTimeout(() => {
+                currentQuizIndex++;
+                if (currentQuizIndex < quizData.length) {
+                    loadQuizQuestion();
+                } else {
+                    finishQuiz();
+                }
+            }, 2000);
+        }
+        
+        function loadQuizQuestion() {
+            const question = quizData[currentQuizIndex];
+            document.getElementById('quizQuestion').textContent = question.question;
+            document.getElementById('quizNum').textContent = currentQuizIndex + 1;
+            document.getElementById('quizScore').textContent = quizScore;
+            
+            const answers = document.querySelectorAll('.quiz-answer');
+            answers.forEach((answer, index) => {
+                answer.textContent = question.answers[index];
+                answer.className = 'quiz-answer';
+                answer.onclick = () => answerQuiz(index);
+            });
+        }
+        
+        function finishQuiz() {
+            earnBadge(2); // Quiz completion badge
+            const percentage = Math.round((quizScore / quizData.length) * 100);
+            let message = `Quiz terminé ! Score: ${quizScore}/${quizData.length} (${percentage}%)\n\n`;
+            
+            if (percentage >= 80) {
+                message += "Excellent ! Vous connaissez parfaitement Arthur & Louis ! 🌟";
+            } else if (percentage >= 60) {
+                message += "Bien joué ! Vous êtes bien informé(e) ! 👍";
+            } else {
+                message += "Pas mal ! Continuez à suivre notre campagne pour en savoir plus ! 😊";
+            }
+            
+            document.getElementById('quizContent').innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h3>${message}</h3>
+                    <button onclick="restartQuiz()" style="margin-top: 20px; padding: 15px 30px; background: var(--accent-color); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 1.1rem;">
+                        Recommencer le Quiz
+                    </button>
+                </div>
+            `;
+        }
+        
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quizContent').innerHTML = `
+                <div class="quiz-question" id="quizQuestion"></div>
+                <div class="quiz-answers">
+                    <div class="quiz-answer" onclick="answerQuiz(0)"></div>
+                    <div class="quiz-answer" onclick="answerQuiz(1)"></div>
+                    <div class="quiz-answer" onclick="answerQuiz(2)"></div>
+                    <div class="quiz-answer" onclick="answerQuiz(3)"></div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <div>Question <span id="quizNum">1</span> sur 5</div>
+                    <div>Score: <span id="quizScore">0</span>/5</div>
+                </div>
+            `;
+            loadQuizQuestion();
+        }
+        
+        // Chat Bot System
+        let chatOpen = false;
+        const chatResponses = {
+            'programme': 'Notre programme se concentre sur 5 axes : événements fun, amélioration de la cantine, meilleure communication, projets écologiques et actions solidaires ! 🎯',
+            'cantine': 'Nous voulons créer un système de suggestions pour la cantine et proposer plus de choix équilibrés. Arthur a déjà rencontré le chef cuisinier ! 🍕',
+            'experience': 'Arthur était délégué en 4ème et Louis a organisé plusieurs événements. Ensemble, nous avons 2 ans d\'expérience en représentation étudiante ! 📋',
+            'projets': 'Nous avons budgétisé tous nos projets : de 0€ (groupe WhatsApp) à 200€ (événements). Tout est financé par des ventes et subventions ! 💰',
+            'quand': 'Si nous sommes élus, nous commencerons dès la semaine prochaine avec la création du groupe WhatsApp classe ! ⚡',
+            'contact': 'Vous pouvez nous trouver aux casiers n°153 (Arthur) et n°73 (Louis), ou nous parler pendant les pauses ! 📞',
+            'default': 'Désolé, je n\'ai pas compris. Essayez de me parler de : programme, cantine, experience, projets, quand, contact ! 🤖'
+        };
+        
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            const chatbot = document.getElementById('chatbot');
+            chatbot.classList.toggle('open', chatOpen);
+            
+            if (chatOpen) {
+                earnBadge(3); // Chat usage badge
+            }
+        }
+        
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim().toLowerCase();
+            if (!message) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Add user message
+            chatMessages.innerHTML += `<div style="margin-bottom: 10px; text-align: right;"><strong>Vous:</strong> ${input.value}</div>`;
+            
+            // Generate bot response
+            let response = chatResponses.default;
+            for (let key in chatResponses) {
+                if (message.includes(key)) {
+                    response = chatResponses[key];
+                    break;
+                }
+            }
+            
+            setTimeout(() => {
+                chatMessages.innerHTML += `<div style="margin-bottom: 15px;"><strong>🤖 Bot:</strong> ${response}</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                playSound(500, 200);
+            }, 500);
+            
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function handleChatEnter(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+        
+        // FAQ System
+        function toggleFAQ(index) {
+            const faqAnswer = document.getElementById(`faq${index}`);
+            const faqQuestion = faqAnswer.previousElementSibling;
+            const arrow = faqQuestion.querySelector('span');
+            
+            faqAnswer.classList.toggle('open');
+            arrow.textContent = faqAnswer.classList.contains('open') ? '▲' : '▼';
+            
+            if (faqAnswer.classList.contains('open')) {
+                playSound(600, 200);
+            }
+        }
+        
+        // Map Tooltip System
+        function showTooltip(event, text) {
+            const tooltip = document.getElementById('mapTooltip');
+            tooltip.textContent = text;
+            tooltip.style.opacity = '1';
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY - 30) + 'px';
+        }
+        
+        function hideTooltip() {
+            const tooltip = document.getElementById('mapTooltip');
+            tooltip.style.opacity = '0';
+        }
+        
+        // Comments System
+        function addComment() {
+            const input = document.getElementById('commentInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const commentsList = document.getElementById('commentsList');
+            const names = ['Alex', 'Marie', 'Thomas', 'Emma', 'Lucas', 'Sarah', 'Maxime', 'Léa'];
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <div class="comment-author">${randomName}</div>
+                <div>${message}</div>
+            `;
+            
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+            input.value = '';
+            playSound(700, 300);
+            earnBadge(3); // Comments badge
+        }
+        
+        // Memory Game
+        function initializeGame() {
+            const gameBoard = document.getElementById('gameBoard');
+            gameBoard.innerHTML = '';
+            
+            // Create card pairs
+            const cards = [...gameCards, ...gameCards];
+            cards.sort(() => Math.random() - 0.5);
+            
+            cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'game-card';
+                cardElement.textContent = '?';
+                cardElement.dataset.value = card;
+                cardElement.dataset.index = index;
+                cardElement.onclick = () => flipCard(cardElement);
+                gameBoard.appendChild(cardElement);
+            });
+            
+            moves = 0;
+            gameTimer = 0;
+            flippedCards = [];
+            document.getElementById('moves').textContent = moves;
+            document.getElementById('timer').textContent = '00:00';
+            
+            if (gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(() => {
+                gameTimer++;
+                const minutes = Math.floor(gameTimer / 60);
+                const seconds = gameTimer % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        
+        function flipCard(card) {
+            if (flippedCards.length >= 2 || card.classList.contains('flipped')) return;
+            
+            card.textContent = card.dataset.value;
+            card.classList.add('flipped');
+            flippedCards.push(card);
+            playSound(800, 200);
+            
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('moves').textContent = moves;
+                
+                setTimeout(() => {
+                    if (flippedCards[0].dataset.value === flippedCards[1].dataset.value) {
+                        // Match found
+                        flippedCards.forEach(c => {
+                            c.style.background = 'var(--accent-color)';
+                            c.style.opacity = '0.7';
+                        });
+                        playSound(1000, 400);
+                        
+                        // Check if game is complete
+                        if (document.querySelectorAll('.game-card[style*="opacity: 0.7"]').length === gameCards.length * 2) {
+                            clearInterval(gameInterval);
+                            setTimeout(() => {
+                                alert(`🎉 Bravo ! Vous avez gagné en ${moves} coups et ${document.getElementById('timer').textContent} !`);
+                                earnBadge(4); // Game completion badge
+                            }, 500);
+                        }
+                    } else {
+                        // No match
+                        flippedCards.forEach(c => {
+                            c.textContent = '?';
+                            c.classList.remove('flipped');
+                        });
+                        playSound(300, 400);
+                    }
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+        
+        function resetGame() {
+            if (gameInterval) clearInterval(gameInterval);
+            initializeGame();
+        }
+        
+        // Badge System
+        function earnBadge(badgeIndex) {
+            if (badges[badgeIndex]) return; // Already earned
+            
+            badges[badgeIndex] = true;
+            const badge = document.getElementById(`badge${badgeIndex + 1}`);
+            badge.classList.add('earned');
+            playSound(1200, 600);
+            
+            const badgeNames = ['Visiteur', 'Sondeur', 'Expert', 'Social', 'Joueur', 'Explorateur'];
+            setTimeout(() => {
+                alert(`🎊 Badge débloqué : ${badgeNames[badgeIndex]} !`);
+            }, 300);
+        }
+        
+        // Easter Eggs - Konami Code
+        document.addEventListener('keydown', function(event) {
+            konamiCode.push(event.keyCode);
+            if (konamiCode.length > konamiPattern.length) {
+                konamiCode.shift();
+            }
+            
+            if (konamiCode.toString() === konamiPattern.toString()) {
+                document.body.classList.add('konami-activated');
+                createConfetti();
+                playSound(800, 200);
+                setTimeout(() => playSound(1000, 300), 200);
+                setTimeout(() => playSound(1200, 400), 400);
+                alert('🎊 Konami Code activé ! Easter egg trouvé ! 🎮');
+                earnBadge(5); // Easter egg badge
+                
+                setTimeout(() => {
+                    document.body.classList.remove('konami-activated');
+                }, 5000);
+            }
+        });
+        
+        // Vote Function
         function showMessage() {
             createConfetti();
+            playSound(1000, 800);
             setTimeout(() => {
                 alert("Merci pour votre confiance ! 🎉\nArthur & Louis comptent sur vous le jour du vote !");
-                // Redirection après le message
                 window.open('https://challenge.anawan.io', '_blank');
             }, 500);
         }
         
-        // Animation des éléments au scroll
-        window.addEventListener('scroll', () => {
-            const elements = document.querySelectorAll('.proposition');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = "1";
-                    element.style.transform = "translateY(0)";
-                }
-            });
-        });
-        
-        // Effet de confettis au clic sur le bouton de vote
+        // Confetti Effect
         function createConfetti() {
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
@@ -810,7 +1959,39 @@
             }
         }
         
-        // Ajouter l'animation CSS pour les confettis
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePollResults();
+            loadQuizQuestion();
+            
+            // Earn visitor badge after 5 seconds
+            setTimeout(() => {
+                earnBadge(0);
+            }, 5000);
+            
+            // Add hover sound effects
+            document.querySelectorAll('.vote-button, .proposition, .candidat').forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    if (soundEnabled) playSound(600, 100);
+                });
+            });
+        });
+        
+        // Add CSS for fall animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fall {
