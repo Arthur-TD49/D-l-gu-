@@ -135,35 +135,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
         
-        /* Navigation Menu */
-        .nav-menu {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .nav-item {
-            color: var(--text-color);
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 5px 0;
-            font-weight: bold;
-        }
-        
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
-        }
+
         
         /* Vote Counter */
         .vote-counter {
@@ -739,44 +711,7 @@
             background: rgba(255, 255, 255, 0.2);
         }
         
-        /* Badges System */
-        .badges-container {
-            position: fixed;
-            top: 200px;
-            right: 20px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 15px;
-            z-index: 1000;
-            max-width: 200px;
-        }
-        
-        .badge {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--accent-color);
-            margin: 5px;
-            text-align: center;
-            line-height: 30px;
-            font-size: 0.8rem;
-            opacity: 0.3;
-            transition: all 0.3s ease;
-        }
-        
-        .badge.earned {
-            opacity: 1;
-            animation: badgeEarn 0.5s ease;
-        }
-        
-        @keyframes badgeEarn {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
+
         
         /* Programme section */
         .programme {
@@ -1049,11 +984,7 @@
                 height: 350px;
             }
             
-            .nav-menu {
-                display: none;
-            }
-            
-            .vote-counter, .badges-container {
+            .vote-counter, .sound-toggle {
                 position: static;
                 margin: 20px auto;
                 width: fit-content;
@@ -1100,16 +1031,7 @@
     <!-- Sound Toggle -->
     <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">🔊</button>
     
-    <!-- Navigation Menu -->
-    <nav class="nav-menu">
-        <a href="#candidats" class="nav-item">👥 Candidats</a>
-        <a href="#programme" class="nav-item">📋 Programme</a>
-        <a href="#sondage" class="nav-item">📊 Sondage</a>
-        <a href="#quiz" class="nav-item">🧠 Quiz</a>
-        <a href="#temoignages" class="nav-item">💬 Témoignages</a>
-        <a href="#faq" class="nav-item">❓ FAQ</a>
-        <a href="#vote" class="nav-item">🗳️ Voter</a>
-    </nav>
+
     
     <!-- Vote Counter -->
     <div class="vote-counter">
@@ -1118,16 +1040,7 @@
         <div style="font-size: 0.8rem;">🔥 +23 aujourd'hui</div>
     </div>
     
-    <!-- Badges Container -->
-    <div class="badges-container">
-        <div style="color: var(--text-color); font-size: 0.9rem; margin-bottom: 10px;">Badges</div>
-        <div class="badge" id="badge1">🎯</div>
-        <div class="badge" id="badge2">📊</div>
-        <div class="badge" id="badge3">🧠</div>
-        <div class="badge" id="badge4">💬</div>
-        <div class="badge" id="badge5">🎮</div>
-        <div class="badge" id="badge6">🎊</div>
-    </div>
+
 
     <!-- Chat Bot -->
     <div class="chatbot" id="chatbot">
@@ -1484,7 +1397,7 @@
         ];
         let currentQuizIndex = 0;
         let quizScore = 0;
-        let badges = [false, false, false, false, false, false];
+        let badges = [];
         let konamiCode = [];
         let konamiPattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
         
@@ -1890,19 +1803,10 @@
             initializeGame();
         }
         
-        // Badge System
+        // Badge System - Removed
         function earnBadge(badgeIndex) {
-            if (badges[badgeIndex]) return; // Already earned
-            
-            badges[badgeIndex] = true;
-            const badge = document.getElementById(`badge${badgeIndex + 1}`);
-            badge.classList.add('earned');
-            playSound(1200, 600);
-            
-            const badgeNames = ['Visiteur', 'Sondeur', 'Expert', 'Social', 'Joueur', 'Explorateur'];
-            setTimeout(() => {
-                alert(`🎊 Badge débloqué : ${badgeNames[badgeIndex]} !`);
-            }, 300);
+            // Badges system disabled
+            return;
         }
         
         // Easter Eggs - Konami Code
@@ -1977,11 +1881,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             updatePollResults();
             loadQuizQuestion();
-            
-            // Earn visitor badge after 5 seconds
-            setTimeout(() => {
-                earnBadge(0);
-            }, 5000);
             
             // Add hover sound effects
             document.querySelectorAll('.vote-button, .proposition, .candidat').forEach(element => {
