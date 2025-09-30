@@ -135,31 +135,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
         
-
-        
-        /* Vote Counter */
-        .vote-counter {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 15px;
-            color: var(--text-color);
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-        
-        .vote-count {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-        
         /* Chat Bot */
         .chatbot {
             position: fixed;
@@ -407,228 +382,6 @@
             background-clip: text;
         }
         
-        /* Interactive Poll */
-        .poll-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: var(--text-color);
-        }
-        
-        .poll-option {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .poll-option:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-        }
-        
-        .poll-result {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background: var(--accent-color);
-            transition: width 0.5s ease;
-            opacity: 0.3;
-            border-radius: 13px;
-        }
-        
-        /* Quiz Section */
-        .quiz-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: var(--text-color);
-        }
-        
-        .quiz-question {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        .quiz-answers {
-            display: grid;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .quiz-answer {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .quiz-answer:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .quiz-answer.correct {
-            background: rgba(76, 175, 80, 0.3);
-            border-color: #4CAF50;
-        }
-        
-        .quiz-answer.incorrect {
-            background: rgba(244, 67, 54, 0.3);
-            border-color: #F44336;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-        
-        .testimonial {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 25px;
-            color: var(--text-color);
-            position: relative;
-        }
-        
-        .testimonial::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            color: var(--accent-color);
-            opacity: 0.5;
-        }
-        
-        .testimonial-author {
-            text-align: right;
-            font-weight: bold;
-            margin-top: 15px;
-            color: var(--accent-color);
-        }
-        
-        /* Interactive Map */
-        .map-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: var(--text-color);
-            text-align: center;
-        }
-        
-        .college-map {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            position: relative;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-        
-        .map-point {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            cursor: pointer;
-            animation: mapPulse 2s infinite;
-            box-shadow: 0 0 20px var(--accent-color);
-        }
-        
-        .map-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        /* Comments Section */
-        .comments-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: var(--text-color);
-        }
-        
-        .comment-form {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .comment-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-            outline: none;
-        }
-        
-        .comment-form button {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 10px;
-            background: var(--accent-color);
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .comments-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .comment {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .comment-author {
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-        
         /* FAQ Section */
         .faq-container {
             margin: 30px 0;
@@ -670,48 +423,6 @@
             max-height: 200px;
             padding: 20px;
         }
-        
-        /* Mini Game */
-        .game-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: var(--text-color);
-            text-align: center;
-        }
-        
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            max-width: 400px;
-            margin: 20px auto;
-        }
-        
-        .game-card {
-            aspect-ratio: 1;
-            background: var(--accent-color);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .game-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .game-card.flipped {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-
         
         /* Programme section */
         .programme {
@@ -820,31 +531,6 @@
             background: rgba(255, 255, 255, 0.3);
         }
         
-        /* Sound toggle */
-        .sound-toggle {
-            position: fixed;
-            top: 100px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 2px solid var(--glass-border);
-            color: var(--text-color);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .sound-toggle:hover {
-            transform: scale(1.1);
-        }
-        
         /* Animations */
         @keyframes liquidPulse {
             0%, 100% { 
@@ -938,22 +624,6 @@
             50% { transform: translateY(-5px); }
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        @keyframes mapPulse {
-            0%, 100% { 
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% { 
-                transform: scale(1.5);
-                opacity: 0.7;
-            }
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .candidats {
@@ -983,12 +653,6 @@
                 width: 300px;
                 height: 350px;
             }
-            
-            .vote-counter, .sound-toggle {
-                position: static;
-                margin: 20px auto;
-                width: fit-content;
-            }
         }
         
         .floating {
@@ -998,16 +662,6 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
-        }
-        
-        /* Easter Egg Styles */
-        .konami-activated {
-            animation: rainbow 2s infinite;
-        }
-        
-        @keyframes rainbow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
         }
         
         .hidden {
@@ -1060,16 +714,16 @@
                 <div>Élèves convaincus</div>
             </div>
             <div class="metric">
-                <div class="metric-number">O</div>
+                <div class="metric-number">0</div>
                 <div>Projets confirmés</div>
             </div>
             <div class="metric">
-                <div class="metric-number">1 ans</div>
-                <div>Jours pour agir</div>
+                <div class="metric-number">1 an</div>
+                <div>Pour agir</div>
             </div>
             <div class="metric">
                 <div class="metric-number">1</div>
-                <div>Années d'expérience</div>
+                <div>Année d'expérience</div>
             </div>
         </div>
         
@@ -1091,75 +745,11 @@
                         <p>Créatif, dynamique et plein d'idées innovantes ! Je suis déterminé à rendre notre année scolaire plus fun et enrichissante pour tous.</p>
                         <div style="margin-top: 20px;">
                             <strong>📋 CV Express:</strong><br>
-                            • Fait partie des badiste
+                            • Fait partie des badistes
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Interactive Poll -->
-            <section id="sondage">
-                <h2 class="section-title">📊 Sondage en Direct</h2>
-                <div class="poll-container">
-                    <h3>Quelle est votre priorité n°1 pour cette année ?</h3>
-                    <div class="poll-option" onclick="vote('events')" id="poll1">
-                        <div class="poll-result" id="result1"></div>
-                        <span>🎉 Plus d'événements et d'activités fun</span>
-                        <span style="float: right;" id="percent1">0%</span>
-                    </div>
-                    <div class="poll-option" onclick="vote('food')" id="poll2">
-                        <div class="poll-result" id="result2"></div>
-                        <span>🍕 Amélioration de la cantine</span>
-                        <span style="float: right;" id="percent2">0%</span>
-                    </div>
-                    <div class="poll-option" onclick="vote('environment')" id="poll3">
-                        <div class="poll-result" id="result3"></div>
-                        <span>🌱 Projets écologiques</span>
-                        <span style="float: right;" id="percent3">0%</span>
-                    </div>
-                    <div class="poll-option" onclick="vote('communication')" id="poll4">
-                        <div class="poll-result" id="result4"></div>
-                        <span>📢 Meilleure communication</span>
-                        <span style="float: right;" id="percent4">0%</span>
-                    </div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <strong id="totalVotes">Total: 0 votes</strong>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Quiz Section -->
-            <section id="quiz">
-                <h2 class="section-title">🧠 Quiz: Connaissez-vous Arthur & Louis ?</h2>
-                <div class="quiz-container">
-                    <div id="quizContent">
-                        <div class="quiz-question" id="quizQuestion">Quel est le projet prioritaire d'Arthur pour la cantine ?</div>
-                        <div class="quiz-answers">
-                            <div class="quiz-answer" onclick="answerQuiz(0)">Ajouter plus de desserts</div>
-                            <div class="quiz-answer" onclick="answerQuiz(1)">Proposer des menus équilibrés et plus de choix</div>
-                            <div class="quiz-answer" onclick="answerQuiz(2)">Réduire les prix</div>
-                            <div class="quiz-answer" onclick="answerQuiz(3)">Changer de fournisseur</div>
-                        </div>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <div>Question <span id="quizNum">1</span> sur 5</div>
-                            <div>Score: <span id="quizScore">0</span>/5</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Interactive Map -->
-            <h2 class="section-title">🗺️ Carte Interactive du Collège</h2>
-            <div class="map-container">
-                <div class="college-map">
-                    <div class="map-point" style="top: 20%; left: 30%;" onmouseover="showTooltip(event, 'Cantine: Nouveau système de suggestions')" onmouseout="hideTooltip()"></div>
-                    <div class="map-point" style="top: 60%; left: 70%;" onmouseover="showTooltip(event, 'Cour: Organisation de tournois sportifs')" onmouseout="hideTooltip()"></div>
-                    <div class="map-point" style="top: 40%; left: 20%;" onmouseover="showTooltip(event, 'CDI: Espace détente et jeux')" onmouseout="hideTooltip()"></div>
-                    <div class="map-point" style="top: 80%; left: 50%;" onmouseover="showTooltip(event, 'Entrée: Panneau d\'affichage interactif')" onmouseout="hideTooltip()"></div>
-                    <div class="map-tooltip" id="mapTooltip"></div>
-                </div>
-                <p>Survolez les points pour découvrir nos projets dans chaque zone du collège !</p>
-            </div>
             
             <!-- Programme section -->
             <section id="programme">
@@ -1210,29 +800,6 @@
                 </div>
             </section>
             
-            <!-- Testimonials -->
-            <section id="temoignages">
-                <h2 class="section-title">💬 Témoignages</h2>
-                <div class="testimonials">
-                    <div class="testimonial">
-                        <p>Arthur a vraiment écouté nos préoccupations l'année dernière et a agi rapidement. Je lui fais confiance pour cette année !</p>
-                        <div class="testimonial-author">- Emma, 5A</div>
-                    </div>
-                    <div class="testimonial">
-                        <p>Louis a des idées géniales ! Grâce à lui, on a eu la meilleure collecte de Noël du collège.</p>
-                        <div class="testimonial-author">- Maxime, 5B</div>
-                    </div>
-                    <div class="testimonial">
-                        <p>Ensemble, ils forment une équipe parfaite. L'un est organisé, l'autre créatif. Exactement ce qu'il nous faut !</p>
-                        <div class="testimonial-author">- Sarah, 5A</div>
-                    </div>
-                    <div class="testimonial">
-                        <p>Ils sont toujours là pour aider et écouter. De vrais leaders qui nous représentent bien.</p>
-                        <div class="testimonial-author">- Thomas, 5A</div>
-                    </div>
-                </div>
-            </section>
-            
             <!-- FAQ Section -->
             <section id="faq">
                 <h2 class="section-title">❓ Questions Fréquentes</h2>
@@ -1274,57 +841,6 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Mini Game -->
-            <h2 class="section-title">🎮 Mini-Jeu: Memory Arthur & Louis</h2>
-            <div class="game-container">
-                <p>Retrouvez les paires ! Cliquez sur les cartes pour les retourner.</p>
-                <div class="game-board" id="gameBoard"></div>
-                <div style="margin-top: 20px;">
-                    <div>Coups: <span id="moves">0</span></div>
-                    <div>Temps: <span id="timer">00:00</span></div>
-                    <button onclick="resetGame()" style="margin-top: 10px; padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 10px; cursor: pointer;">Nouvelle Partie</button>
-                </div>
-            </div>
-            
-            <!-- Comments Section -->
-            <h2 class="section-title">💭 Vos Messages</h2>
-            <div class="comments-container">
-                <div class="comment-form">
-                    <input type="text" id="commentInput" placeholder="Laissez-nous un message...">
-                    <button onclick="addComment()">Publier</button>
-                </div>
-                <div class="comments-list" id="commentsList">
-                    <div class="comment">
-                        <div class="comment-author">Alex</div>
-                        <div>Hâte de voir vos projets en action ! 🚀</div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-author">Marie</div>
-                        <div>Super programme, vous avez mon vote ! 👍</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog/News Section -->
-            <h2 class="section-title">📰 Nos Dernières Actions</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 27 Septembre 2024</h4>
-                    <p><strong>Rencontre avec la direction</strong><br>
-                    Nous avons présenté nos idées au principal. Excellente réception de notre projet cantine !</p>
-                </div>
-                <div class="testimonial">
-                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 25 Septembre 2024</h4>
-                    <p><strong>Sondage réalisé</strong><br>
-                    127 élèves interrogés sur leurs attentes. Les résultats guident notre programme !</p>
-                </div>
-                <div class="testimonial">
-                    <h4 style="color: var(--accent-color); margin-bottom: 10px;">📅 23 Septembre 2024</h4>
-                    <p><strong>Formation délégués</strong><br>
-                    Arthur a participé à la formation des délégués pour être encore plus efficace !</p>
-                </div>
-            </div>
         </div>
         
         <section id="vote">
@@ -1333,7 +849,7 @@
                 <p style="font-size: 1.2rem; margin-bottom: 20px;">
                     Ensemble, nous ferons de cette année en 5A une expérience inoubliable !
                 </p>
-                <button class="vote-button" onclick="showMessage()">Je vote pour eux ! 🎉</button>
+                <button class="vote-button" onclick="showMessage()">Je vote pour eux !</button>
                 <div style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
                     <p>📍 <strong>Rendez-vous:</strong> Casier n°153 (Arthur) | Casier n°73 (Louis)</p>
                     <p>📧 Ou remplissez notre formulaire ci-dessous !</p>
@@ -1347,49 +863,6 @@
         // Global Variables
         let soundEnabled = true;
         let currentTheme = 'light';
-        let pollVotes = {events: 45, food: 32, environment: 28, communication: 22};
-        let totalPollVotes = 127;
-        let hasVoted = false;
-        let quizData = [
-            {
-                question: "Quel est le projet prioritaire d'Arthur pour la cantine ?",
-                answers: ["Ajouter plus de desserts", "Proposer des menus équilibrés et plus de choix", "Réduire les prix", "Changer de fournisseur"],
-                correct: 1
-            },
-            {
-                question: "Combien d'années d'expérience Louis a-t-il en organisation d'événements ?",
-                answers: ["1 an", "2 ans", "3 ans", "C'est sa première fois"],
-                correct: 1
-            },
-            {
-                question: "Quel club Louis a-t-il créé ?",
-                answers: ["Club théâtre", "Club écologie", "Club informatique", "Club cuisine"],
-                correct: 1
-            },
-            {
-                question: "Quel poste Arthur a-t-il occupé l'année dernière ?",
-                answers: ["Délégué de classe", "Représentant au conseil", "Responsable cantine", "Toutes les réponses"],
-                correct: 0
-            },
-            {
-                question: "Combien de projets Arthur & Louis comptent-ils réaliser en 30 jours ?",
-                answers: ["3 projets", "5 projets", "7 projets", "10 projets"],
-                correct: 1
-            }
-        ];
-        let currentQuizIndex = 0;
-        let quizScore = 0;
-        let badges = [];
-        let konamiCode = [];
-        let konamiPattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
-        
-        // Game variables
-        let gameCards = ['🎯', '💡', '🎉', '🍕', '📢', '🌱', '🤝', '⭐'];
-        let gameBoard = [];
-        let flippedCards = [];
-        let moves = 0;
-        let gameTimer = 0;
-        let gameInterval;
         
         // Loading System
         let loadingProgress = 0;
@@ -1408,8 +881,6 @@
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
                     body.classList.add('loaded');
-                    startVoteCounter();
-                    initializeGame();
                 }, 500);
             }
         }
@@ -1430,15 +901,6 @@
                 themeToggle.textContent = '🌙';
                 currentTheme = 'light';
             }
-            
-            earnBadge(5); // Theme change badge
-        }
-        
-        // Sound Toggle
-        function toggleSound() {
-            soundEnabled = !soundEnabled;
-            const soundToggle = document.getElementById('soundToggle');
-            soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
         }
         
         // Play Sound
@@ -1466,155 +928,22 @@
             }
         }
         
-        // Vote Counter Animation
-        function startVoteCounter() {
-            let count = 0;
-            const target = 127;
-            const increment = target / 50;
-            
-            const counter = setInterval(() => {
-                count += increment;
-                if (count >= target) {
-                    count = target;
-                    clearInterval(counter);
-                }
-                document.getElementById('voteCount').textContent = Math.floor(count);
-            }, 50);
-        }
-        
-        // Poll System
-        function vote(option) {
-            if (hasVoted) {
-                alert('Vous avez déjà voté ! 😊');
-                return;
-            }
-            
-            hasVoted = true;
-            pollVotes[option]++;
-            totalPollVotes++;
-            updatePollResults();
-            playSound(600, 300);
-            earnBadge(1); // Poll participation badge
-        }
-        
-        function updatePollResults() {
-            const options = ['events', 'food', 'environment', 'communication'];
-            options.forEach((option, index) => {
-                const percentage = Math.round((pollVotes[option] / totalPollVotes) * 100);
-                document.getElementById(`result${index + 1}`).style.width = percentage + '%';
-                document.getElementById(`percent${index + 1}`).textContent = percentage + '%';
-            });
-            document.getElementById('totalVotes').textContent = `Total: ${totalPollVotes} votes`;
-        }
-        
-        // Quiz System
-        function answerQuiz(selectedIndex) {
-            const answers = document.querySelectorAll('.quiz-answer');
-            const correct = quizData[currentQuizIndex].correct;
-            
-            // Disable all answers
-            answers.forEach((answer, index) => {
-                answer.onclick = null;
-                if (index === correct) {
-                    answer.classList.add('correct');
-                } else if (index === selectedIndex && index !== correct) {
-                    answer.classList.add('incorrect');
-                }
-            });
-            
-            if (selectedIndex === correct) {
-                quizScore++;
-                playSound(800, 400);
-            } else {
-                playSound(300, 600);
-            }
-            
-            setTimeout(() => {
-                currentQuizIndex++;
-                if (currentQuizIndex < quizData.length) {
-                    loadQuizQuestion();
-                } else {
-                    finishQuiz();
-                }
-            }, 2000);
-        }
-        
-        function loadQuizQuestion() {
-            const question = quizData[currentQuizIndex];
-            document.getElementById('quizQuestion').textContent = question.question;
-            document.getElementById('quizNum').textContent = currentQuizIndex + 1;
-            document.getElementById('quizScore').textContent = quizScore;
-            
-            const answers = document.querySelectorAll('.quiz-answer');
-            answers.forEach((answer, index) => {
-                answer.textContent = question.answers[index];
-                answer.className = 'quiz-answer';
-                answer.onclick = () => answerQuiz(index);
-            });
-        }
-        
-        function finishQuiz() {
-            earnBadge(2); // Quiz completion badge
-            const percentage = Math.round((quizScore / quizData.length) * 100);
-            let message = `Quiz terminé ! Score: ${quizScore}/${quizData.length} (${percentage}%)\n\n`;
-            
-            if (percentage >= 80) {
-                message += "Excellent ! Vous connaissez parfaitement Arthur & Louis ! 🌟";
-            } else if (percentage >= 60) {
-                message += "Bien joué ! Vous êtes bien informé(e) ! 👍";
-            } else {
-                message += "Pas mal ! Continuez à suivre notre campagne pour en savoir plus ! 😊";
-            }
-            
-            document.getElementById('quizContent').innerHTML = `
-                <div style="text-align: center; padding: 40px;">
-                    <h3>${message}</h3>
-                    <button onclick="restartQuiz()" style="margin-top: 20px; padding: 15px 30px; background: var(--accent-color); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 1.1rem;">
-                        Recommencer le Quiz
-                    </button>
-                </div>
-            `;
-        }
-        
-        function restartQuiz() {
-            currentQuizIndex = 0;
-            quizScore = 0;
-            document.getElementById('quizContent').innerHTML = `
-                <div class="quiz-question" id="quizQuestion"></div>
-                <div class="quiz-answers">
-                    <div class="quiz-answer" onclick="answerQuiz(0)"></div>
-                    <div class="quiz-answer" onclick="answerQuiz(1)"></div>
-                    <div class="quiz-answer" onclick="answerQuiz(2)"></div>
-                    <div class="quiz-answer" onclick="answerQuiz(3)"></div>
-                </div>
-                <div style="text-align: center; margin-top: 20px;">
-                    <div>Question <span id="quizNum">1</span> sur 5</div>
-                    <div>Score: <span id="quizScore">0</span>/5</div>
-                </div>
-            `;
-            loadQuizQuestion();
-        }
-        
         // Chat Bot System
         let chatOpen = false;
         const chatResponses = {
-            'programme': 'Notre programme se concentre sur 5 axes : événements fun, amélioration de la cantine, meilleure communication, projets écologiques et actions solidaires ! 🎯',
-            'cantine': 'Nous voulons créer un système de suggestions pour la cantine et proposer plus de choix équilibrés. Arthur a déjà rencontré le chef cuisinier ! 🍕',
-            'experience': 'Arthur était délégué en 4ème et Louis a organisé plusieurs événements. Ensemble, nous avons 2 ans d\'expérience en représentation étudiante ! 📋',
-            'projets': 'Nous avons budgétisé tous nos projets : de 0€ (groupe WhatsApp) à 200€ (événements). Tout est financé par des ventes et subventions ! 💰',
-            'quand': 'Si nous sommes élus, nous commencerons dès la semaine prochaine avec la création du groupe WhatsApp classe ! ⚡',
-            'contact': 'Vous pouvez nous trouver aux casiers n°153 (Arthur) et n°73 (Louis), ou nous parler pendant les pauses ! 📞',
-            'default': 'Désolé, je n\'ai pas compris. Essayez de me parler de : programme, cantine, experience, projets, quand, contact ! 🤖'
+            'programme': 'Notre programme se concentre sur 5 axes : événements fun, amélioration de la cantine, meilleure communication, projets écologiques et actions solidaires !',
+            'cantine': 'Nous voulons créer un système de suggestions pour la cantine et proposer plus de choix équilibrés. Arthur a déjà rencontré le chef cuisinier !',
+            'experience': 'Arthur était délégué en 6ème et Louis fait partie des badistes. Ensemble, nous avons l\'expérience nécessaire pour vous représenter !',
+            'projets': 'Nous avons budgétisé tous nos projets : de 0€ (groupe WhatsApp) à 200€ (événements). Tout est financé par des ventes et subventions !',
+            'quand': 'Si nous sommes élus, nous commencerons dès la semaine prochaine avec la création du groupe WhatsApp classe !',
+            'contact': 'Vous pouvez nous trouver aux casiers n°153 (Arthur) et n°73 (Louis), ou nous parler pendant les pauses !',
+            'default': 'Désolé, je n\'ai pas compris. Essayez de me parler de : programme, cantine, experience, projets, quand, contact !'
         };
         
         function toggleChat() {
             chatOpen = !chatOpen;
             const chatbot = document.getElementById('chatbot');
             chatbot.classList.toggle('open', chatOpen);
-            
-            if (chatOpen) {
-                earnBadge(3); // Chat usage badge
-            }
         }
         
         function sendChatMessage() {
@@ -1666,160 +995,12 @@
             }
         }
         
-        // Map Tooltip System
-        function showTooltip(event, text) {
-            const tooltip = document.getElementById('mapTooltip');
-            tooltip.textContent = text;
-            tooltip.style.opacity = '1';
-            tooltip.style.left = (event.pageX + 10) + 'px';
-            tooltip.style.top = (event.pageY - 30) + 'px';
-        }
-        
-        function hideTooltip() {
-            const tooltip = document.getElementById('mapTooltip');
-            tooltip.style.opacity = '0';
-        }
-        
-        // Comments System
-        function addComment() {
-            const input = document.getElementById('commentInput');
-            const message = input.value.trim();
-            if (!message) return;
-            
-            const commentsList = document.getElementById('commentsList');
-            const names = ['Alex', 'Marie', 'Thomas', 'Emma', 'Lucas', 'Sarah', 'Maxime', 'Léa'];
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            
-            const newComment = document.createElement('div');
-            newComment.className = 'comment';
-            newComment.innerHTML = `
-                <div class="comment-author">${randomName}</div>
-                <div>${message}</div>
-            `;
-            
-            commentsList.insertBefore(newComment, commentsList.firstChild);
-            input.value = '';
-            playSound(700, 300);
-            earnBadge(3); // Comments badge
-        }
-        
-        // Memory Game
-        function initializeGame() {
-            const gameBoard = document.getElementById('gameBoard');
-            gameBoard.innerHTML = '';
-            
-            // Create card pairs
-            const cards = [...gameCards, ...gameCards];
-            cards.sort(() => Math.random() - 0.5);
-            
-            cards.forEach((card, index) => {
-                const cardElement = document.createElement('div');
-                cardElement.className = 'game-card';
-                cardElement.textContent = '?';
-                cardElement.dataset.value = card;
-                cardElement.dataset.index = index;
-                cardElement.onclick = () => flipCard(cardElement);
-                gameBoard.appendChild(cardElement);
-            });
-            
-            moves = 0;
-            gameTimer = 0;
-            flippedCards = [];
-            document.getElementById('moves').textContent = moves;
-            document.getElementById('timer').textContent = '00:00';
-            
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(() => {
-                gameTimer++;
-                const minutes = Math.floor(gameTimer / 60);
-                const seconds = gameTimer % 60;
-                document.getElementById('timer').textContent = 
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }, 1000);
-        }
-        
-        function flipCard(card) {
-            if (flippedCards.length >= 2 || card.classList.contains('flipped')) return;
-            
-            card.textContent = card.dataset.value;
-            card.classList.add('flipped');
-            flippedCards.push(card);
-            playSound(800, 200);
-            
-            if (flippedCards.length === 2) {
-                moves++;
-                document.getElementById('moves').textContent = moves;
-                
-                setTimeout(() => {
-                    if (flippedCards[0].dataset.value === flippedCards[1].dataset.value) {
-                        // Match found
-                        flippedCards.forEach(c => {
-                            c.style.background = 'var(--accent-color)';
-                            c.style.opacity = '0.7';
-                        });
-                        playSound(1000, 400);
-                        
-                        // Check if game is complete
-                        if (document.querySelectorAll('.game-card[style*="opacity: 0.7"]').length === gameCards.length * 2) {
-                            clearInterval(gameInterval);
-                            setTimeout(() => {
-                                alert(`🎉 Bravo ! Vous avez gagné en ${moves} coups et ${document.getElementById('timer').textContent} !`);
-                                earnBadge(4); // Game completion badge
-                            }, 500);
-                        }
-                    } else {
-                        // No match
-                        flippedCards.forEach(c => {
-                            c.textContent = '?';
-                            c.classList.remove('flipped');
-                        });
-                        playSound(300, 400);
-                    }
-                    flippedCards = [];
-                }, 1000);
-            }
-        }
-        
-        function resetGame() {
-            if (gameInterval) clearInterval(gameInterval);
-            initializeGame();
-        }
-        
-        // Badge System - Removed
-        function earnBadge(badgeIndex) {
-            // Badges system disabled
-            return;
-        }
-        
-        // Easter Eggs - Konami Code
-        document.addEventListener('keydown', function(event) {
-            konamiCode.push(event.keyCode);
-            if (konamiCode.length > konamiPattern.length) {
-                konamiCode.shift();
-            }
-            
-            if (konamiCode.toString() === konamiPattern.toString()) {
-                document.body.classList.add('konami-activated');
-                createConfetti();
-                playSound(800, 200);
-                setTimeout(() => playSound(1000, 300), 200);
-                setTimeout(() => playSound(1200, 400), 400);
-                alert('🎊 Konami Code activé ! Easter egg trouvé ! 🎮');
-                earnBadge(5); // Easter egg badge
-                
-                setTimeout(() => {
-                    document.body.classList.remove('konami-activated');
-                }, 5000);
-            }
-        });
-        
         // Vote Function
         function showMessage() {
             createConfetti();
             playSound(1000, 800);
             setTimeout(() => {
-                alert("Merci pour votre confiance ! 🎉\nArthur & Louis comptent sur vous le jour du vote !");
-                window.open('https://challenge.anawan.io', '_blank');
+                alert("Merci pour votre confiance ! Arthur & Louis comptent sur vous le jour du vote !");
             }, 500);
         }
         
@@ -1861,9 +1042,6 @@
         
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            updatePollResults();
-            loadQuizQuestion();
-            
             // Add hover sound effects
             document.querySelectorAll('.vote-button, .proposition, .candidat').forEach(element => {
                 element.addEventListener('mouseenter', () => {
